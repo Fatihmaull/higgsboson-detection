@@ -1,5 +1,6 @@
 # Impact of Circuit Depth versus Qubit Count on Variational Quantum Classifiers (VQC)
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](LINK_GOOGLE_COLAB_ANDA)
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Qiskit](https://img.shields.io/badge/Qiskit-0.46.0-6133BD)
 ![Status](https://img.shields.io/badge/Status-Research%20Completed-success)
@@ -12,33 +13,34 @@
 
 ## Project Overview
 
-This repository contains the official implementation code for the research paper: **"Impact of Circuit Depth versus Qubit Count on Variational Quantum Classifiers for Higgs Boson Signal Detection"**.
+This repository contains the official source code for the research paper: **"Impact of Circuit Depth versus Qubit Count on Variational Quantum Classifiers for Higgs Boson Signal Detection"**.
 
-In the era of Noisy Intermediate-Scale Quantum (NISQ) computing, finding the optimal architecture for Quantum Machine Learning (QML) is a critical challenge. This study benchmarks the trade-off between **circuit depth (entanglement capability)** and **qubit count (feature width)** using the ATLAS Higgs Boson dataset.
+This study benchmarks the trade-off between **circuit depth** and **qubit count** on Noisy Intermediate-Scale Quantum (NISQ) devices using the ATLAS Higgs Boson dataset.
 
 **Key Findings:**
-* **"Squeeze and Deepen" Strategy:** Prioritizing circuit depth over width yields better performance on NISQ devices.
-* **Optimal Configuration:** A 4-qubit deep circuit (`reps=2`) achieved the highest accuracy (**56.2%**).
-* **Barren Plateau:** Simply expanding the width to 8 qubits caused optimization failure (accuracy dropped to **50.6%**) due to vanishing gradients in the larger Hilbert space.
+* **"Squeeze and Deepen":** A 4-qubit deep circuit (`reps=2`) outperformed wider circuits, achieving **56.2% accuracy**.
+* **Barren Plateau:** The 8-qubit model failed to converge due to vanishing gradients in high-dimensional Hilbert space.
 
 ---
 
-## Methodology & Stack
+## Quick Start (Run in Browser)
 
-The project implements a full Quantum Machine Learning pipeline:
+You do **not** need to install anything on your local machine. The entire experiment is designed to run in the cloud via Google Colab.
 
-1.  **Preprocessing:** Data cleaning, normalization, and balancing (Signal vs Background).
-2.  **Dimensionality Reduction:** **Principal Component Analysis (PCA)** to map 30 physical features into latent quantum spaces ($4$ and $8$ qubits).
-3.  **Quantum Circuit:**
-    * **Feature Map:** `ZZFeatureMap` (Second-order expansion).
-    * **Ansatz:** `RealAmplitudes` (Parameterized rotation layers + CNOT entanglement).
-4.  **Optimization:** `COBYLA` (Gradient-free optimizer suitable for noisy simulations).
+### Step 1: Open the Notebook
+Click the badge below to open the interactive notebook:
 
-### Tech Stack
-* **Language:** Python
-* **Quantum SDK:** Qiskit
-* **ML Library:** Scikit-learn
-* **Data Manipulation:** Pandas, NumPy
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]([https://colab.research.google.com/drive/1BvhjWAd0qxb4LU3bzZUXkT6XpY-c4LD3?usp=sharing])
+
+### Step 2: Upload the Dataset
+The notebook requires the dataset file to run.
+1. Download `training.csv` from the [CERN Open Data Portal](http://opendata.cern.ch/collection/ATLAS-Higgs-Challenge-2014) or from the `data/` folder in this repository.
+2. In Google Colab, click the **Folder Icon** (left sidebar).
+3. Drag and drop the `training.csv` file into the sidebar.
+
+### Step 3: Run All Cells
+In the Colab menu, go to **Runtime** > **Run all**.
+* *Note:* The first cell will automatically install the required libraries (`qiskit`, `qiskit-machine-learning`, etc.) into the cloud environment.
 
 ---
 
@@ -55,40 +57,31 @@ With increased entanglement depth, the VQC successfully separates the Signal (Hi
 *Figure 1: PCA Projection of the decision boundary. Red points are Higgs Signals, Blue points are Background.*
 
 ### 2. The Failure of Width (8-Qubit)
-Expanding to 8 qubits resulted in a random-guess performance, consistent with the **Barren Plateau** phenomenon.
+Expanding to 8 qubits resulted in optimization failure, consistent with the **Barren Plateau** phenomenon.
 
 | Configuration | Qubits | Depth (Reps) | Accuracy | Status |
 | :--- | :---: | :---: | :---: | :--- |
-| **Stage III** | 8 | 1 | 50.6% |  Failed to Converge |
+| **Stage III** | 8 | 1 | 50.6% | Failed to Converge |
 
 ---
 
-## Installation & Usage
+## Tech Stack
+* **Language:** Python
+* **Quantum SDK:** Qiskit (IBM Quantum)
+* **Optimization:** COBYLA (Scikit-learn / Qiskit Algorithms)
+* **Data Processing:** Pandas, NumPy, PCA
 
-### Prerequisites
-Ensure you have Python 3.8+ installed.
+---
 
-### 1. Clone the Repository
-```bash
-git clone [https://github.com/username/quantum-higgs-classifier.git](https://github.com/username/quantum-higgs-classifier.git)
-cd quantum-higgs-classifier
-```
+## Citation
 
-### 2. Install Dependencies
-Bash
+If you use this code or findings in your research, please cite:
 
-pip install -r requirements.txt
-
-3. Download Dataset
-This project uses the ATLAS Higgs Boson Machine Learning Challenge 2014 dataset.
-
-Download training.csv from CERN Open Data Portal.
-
-Place the file in the root directory or data/ folder.
-
-4. Run the Experiment
-You can run the Jupyter Notebook directly or execute the Python script:
-
-Bash
-
-jupyter notebook notebooks/Quantum_Higgs_Classifier.ipynb
+```bibtex
+@article{Maulana2025HiggsQML,
+  title={Impact of Circuit Depth versus Qubit Count on Variational Quantum Classifiers for Higgs Boson Signal Detection},
+  author={Maulana, Fatih},
+  journal={arXiv preprint},
+  year={2025},
+  institution={Universiti Utara Malaysia and UIN Sunan Gunung Djati Bandung}
+}
