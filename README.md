@@ -1,6 +1,6 @@
 # Impact of Circuit Depth versus Qubit Count on Variational Quantum Classifiers (VQC)
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](LINK_GOOGLE_COLAB_ANDA)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1BvhjWAd0qxb4LU3bzZUXkT6XpY-c4LD3?usp=sharing)
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![Qiskit](https://img.shields.io/badge/Qiskit-0.46.0-6133BD)
 ![Status](https://img.shields.io/badge/Status-Research%20Completed-success)
@@ -30,7 +30,7 @@ You do **not** need to install anything on your local machine. The entire experi
 ### Step 1: Open the Notebook
 Click the badge below to open the interactive notebook:
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)]([https://colab.research.google.com/drive/1BvhjWAd0qxb4LU3bzZUXkT6XpY-c4LD3?usp=sharing])
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1BvhjWAd0qxb4LU3bzZUXkT6XpY-c4LD3?usp=sharing)
 
 ### Step 2: Upload the Dataset
 The notebook requires the dataset file to run.
