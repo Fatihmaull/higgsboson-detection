@@ -54,6 +54,7 @@ With increased entanglement depth, the VQC successfully separates the Signal (Hi
 | **Stage II** | **4** | **2** | **56.2%** | **Optimal** |
 
 ![PCA Projection](assets/deep_circuit_result_projection.png)
+
 *Figure 1: PCA Projection of the decision boundary. Red points are Higgs Signals, Blue points are Background.*
 
 ### 2. The Failure of Width (8-Qubit)
